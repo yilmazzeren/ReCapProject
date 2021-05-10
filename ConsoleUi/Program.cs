@@ -9,7 +9,7 @@ namespace ConsoleUi
     {
         static void Main(string[] args)
         {
-            //cartest();
+            cartest();
             //brandtest();
             //colorTest();
         }
@@ -40,9 +40,10 @@ namespace ConsoleUi
         private static void cartest()
         {
             CarManager carManager = new CarManager(new EfCarDal());
-            Car car = new Car() { Id = 2, BrandId = 3, ColorId = 4, DailyPrice = 500, Description = "BMW", ModelYear = 2020 };
+            //Car car = new Car() { Id = 2, BrandId = 3, ColorId = 4, DailyPrice = 500, Description = "BMW", ModelYear = 2020 };
+            Car car1 = new Car() { Id = 3, BrandId = 2, ColorId = 2, DailyPrice = 200, Description = "Ford", ModelYear = 2020 };
 
-            //carManager.Add(car);
+            carManager.Add(car1);
             foreach (var c in carManager.GetList())
             {
                 Console.WriteLine(c.Description);

@@ -20,7 +20,15 @@ namespace Business.Concrete
 
         public void Add(Car car)
         {
-            carDal.Add(car);
+            if (car.Description.Length >= 3 && car.DailyPrice>0)
+            {
+                carDal.Add(car);
+
+            }
+            else
+            {
+                Console.WriteLine("Ürün eklenmedı. Açıklama minimum 3 karakter olmalıdır");
+            }
         }
 
         public void Delete(Car car)
