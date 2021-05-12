@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -19,27 +20,32 @@ namespace Business.Concrete
             this.carDal = carDal;
         }
 
-        public void Add(Car car)
+        public IResult Add(Car car)
         {
             if (car.Description.Length >= 3 && car.DailyPrice>0)
             {
                 carDal.Add(car);
+                return new SuccessResult("Ürün eklendi");
 
             }
             else
             {
-                Console.WriteLine("Ürün eklenmedı. Açıklama minimum 3 karakter olmalıdır");
+                return new ErrorResult("Ürün Eklenmedi. Ürün ismi min 3 karakter olmalı ve fiyat 0'dan büyük olmalıdır");
+
             }
         }
 
-        public void Delete(Car car)
+        public IResult Delete(Car car)
         {
             carDal.Delete(car);
+            return new Result(true,"Ürün Silindi");
+
         }
 
-        public List<Car> GetById(int id)
+        public Car GetById(int id)
         {
-            return carDal.GetList(c=>c.Id==id);
+            return carDal.GetById(c => c.Id == id);
+
         }
 
         public List<CarDetailDto> GetCarDetails()
@@ -52,9 +58,13 @@ namespace Business.Concrete
             return carDal.GetList();
         }
 
-        public void Update(Car car)
+        public IResult Update(Car car)
         {
             carDal.Update(car);
+            return new Result(true);
+
         }
+
+
     }
 }
