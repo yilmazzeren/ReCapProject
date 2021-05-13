@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -25,12 +26,12 @@ namespace Business.Concrete
             if (car.Description.Length >= 3 && car.DailyPrice>0)
             {
                 carDal.Add(car);
-                return new SuccessResult("Ürün eklendi");
+                return new SuccessResult(Messages.CarAdded);
 
             }
             else
             {
-                return new ErrorResult("Ürün Eklenmedi. Ürün ismi min 3 karakter olmalı ve fiyat 0'dan büyük olmalıdır");
+                return new ErrorResult(Messages.CarNameInvalid);
 
             }
         }
