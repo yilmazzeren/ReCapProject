@@ -14,8 +14,8 @@ namespace Business.Abstract
         IResult Add(Car car);
         IResult Delete(Car car);
         IResult Update(Car car);
-        List<Car> GetList();
-        Car GetById(int id);
-        List<CarDetailDto> GetCarDetails();
+        IDataResult<List<Car>> GetList();
+        IDataResult<Car> GetById(int id);
+        IDataResult<List<CarDetailDto>> GetCarDetails();
     }
 }

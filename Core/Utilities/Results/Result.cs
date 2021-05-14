@@ -13,7 +13,7 @@ namespace Core.Utilities.Results
         {
             // bu constractor'ı çalıştıran elaman iki parametreli
             // contractor çalıştırabilir burda this diyerek istersen tek parametreli
-            // olan constractor'ıda çalıştırabilirsin diyoruz.
+            // olan constractor'a success'i gönderiyoruz. çalıştırabilirsin diyoruz.
 
             // get read only'dir ama constractor içerisinde set edilebilir
             Message = message;

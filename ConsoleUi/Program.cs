@@ -18,7 +18,7 @@ namespace ConsoleUi
         private static void cardDtoTest()
         {
             CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var item in carManager.GetCarDetails())
+            foreach (var item in carManager.GetCarDetails().Data)
             {
                 Console.WriteLine("Car Name :" + item.CarName + "Color Name :" + item.ColorName + "Brand Name :" + item.BrandName);
             }
@@ -58,8 +58,20 @@ namespace ConsoleUi
             //{
             //    Console.WriteLine(c.Description);
             //}
-           
-            Console.WriteLine(carManager.GetById(2).Description);
+
+            //Console.WriteLine(carManager.GetById(2).Description);
+            var result = carManager.GetCarDetails();
+            if(result.Success)
+            {
+                foreach (var item in result.Data)
+                {
+                    Console.WriteLine(item.CarName + " / " + item.BrandName);
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
         }
     }
 }
