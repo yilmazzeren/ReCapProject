@@ -60,12 +60,13 @@ namespace ConsoleUi
             //}
 
             //Console.WriteLine(carManager.GetById(2).Description);
+
             var result = carManager.GetCarDetails();
             if(result.Success)
             {
                 foreach (var item in result.Data)
                 {
-                    Console.WriteLine(item.CarName + " / " + item.BrandName);
+                    Console.WriteLine(item.CarName + " / " + item.BrandName );
                 }
             }
             else
