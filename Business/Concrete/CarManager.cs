@@ -21,6 +21,7 @@ namespace Business.Concrete
             this.carDal = carDal;
         }
 
+        //[SecuredOperation("admin,editor")]
         public IResult Add(Car car)
         {
             if (car.Description.Length >= 3 && car.DailyPrice>0)
